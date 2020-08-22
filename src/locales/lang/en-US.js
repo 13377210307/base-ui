@@ -15,8 +15,8 @@ const locale = {
   'menu.dashboard.monitor': 'Monitor',
   'menu.dashboard.workplace': 'Workplace',
 
-  'layouts.usermenu.dialog.title': 'Message',
-  'layouts.usermenu.dialog.content': 'Do you really log-out.',
+  'layouts.usermenu.dialog.title': '提示信息',
+  'layouts.usermenu.dialog.content': '你确定退出吗？',
 
   'app.setting.pagestyle': 'Page style setting',
   'app.setting.pagestyle.light': 'Light style',

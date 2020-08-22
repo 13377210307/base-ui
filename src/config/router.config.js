@@ -260,6 +260,21 @@ export const asyncRouterMap = [
             ]
           }
         ]
+      },
+      {
+        path: '/chart',
+        component: RouteView,
+        redirect: '/chart/index',
+        name: 'account',
+        meta: { title: '聊天室', icon: 'message', keepAlive: true, permission: [ 'user' ] },
+        children: [
+          {
+            path: '/chart/index',
+            name: 'chart',
+            component: () => import('@/views/chart/index'),
+            meta: { title: '聊天室', keepAlive: true, permission: [ 'user' ] }
+          }
+        ]
       }
 
       // other

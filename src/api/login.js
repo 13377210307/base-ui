@@ -24,11 +24,16 @@ const userApi = {
  * @param parameter
  * @returns {*}
  */
-export function login (parameter) {
+export function login (params) {
   return request({
-    url: userApi.Login,
+    url: '/oauth/oauth/token',
     method: 'post',
-    data: parameter
+    headers: { 'Authorization': 'Basic YmFzZTpiYXNl' },
+    params: {
+      grant_type: 'password',
+      username: params.username,
+      password: params.password
+    }
   })
 }
 
