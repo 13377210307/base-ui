@@ -24,6 +24,8 @@ const userApi = {
  * @param parameter
  * @returns {*}
  */
+
+// 登录
 export function login (params) {
   return request({
     url: '/oauth/oauth/token',
@@ -37,6 +39,26 @@ export function login (params) {
   })
 }
 
+// 退出登录
+/* export function logout (accessToken) {
+  return request({
+    url: '/oauth/oauth/token',
+    method: 'delete',
+    headers: { 'Authorization': 'Basic YmFzZTpiYXNl' },
+    params: {
+      access_token: accessToken
+    }
+  })
+} */
+
+// 获取用户信息
+export function getInfo () {
+  return request({
+    url: '/user/user/info',
+    method: 'get'
+  })
+}
+
 export function getSmsCaptcha (parameter) {
   return request({
     url: userApi.SendSms,
@@ -45,30 +67,10 @@ export function getSmsCaptcha (parameter) {
   })
 }
 
-export function getInfo () {
-  return request({
-    url: userApi.UserInfo,
-    method: 'get',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
-  })
-}
-
 export function getCurrentUserNav () {
   return request({
     url: userApi.UserMenu,
     method: 'get'
-  })
-}
-
-export function logout () {
-  return request({
-    url: userApi.Logout,
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json;charset=UTF-8'
-    }
   })
 }
 

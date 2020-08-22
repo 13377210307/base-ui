@@ -44,16 +44,27 @@ const errorHandler = (error) => {
 // request interceptor
 request.interceptors.request.use(config => {
   const token = storage.get(ACCESS_TOKEN)
-  // 如果 token 存在
   // 让每个请求携带自定义 token 请根据实际情况自行修改
-  if (token) {
-    config.headers['Access-Token'] = token
+  if (token && !config.headers['Authorization']) {
+    config.headers['Authorization'] = 'bearer ' + token
   }
   return config
 }, errorHandler)
 
 // response interceptor
 request.interceptors.response.use((response) => {
+  if (response.data.code === 401) {
+    notification.error({
+      message: '消息提示',
+      description: '登录失效',
+      duration: 2
+    })
+    store.dispatch('Logout').then(() => {
+      setTimeout(() => {
+        window.location.reload()
+      }, 2000)
+    })
+  }
   return response.data
 }, errorHandler)
 
