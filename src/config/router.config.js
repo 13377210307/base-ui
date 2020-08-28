@@ -261,6 +261,23 @@ export const asyncRouterMap = [
           }
         ]
       },
+      // 系统管理
+      {
+        path: '/system',
+        component: RouteView,
+        redirect: '/user/index',
+        name: 'account',
+        meta: { title: '系统管理', icon: 'setting', keepAlive: true, permission: [ 'dashboard' ] },
+        children: [
+          {
+            path: '/user/index',
+            name: 'user',
+            component: () => import('@/views/system/user/User'),
+            meta: { title: '用户管理', keepAlive: true, permission: [ 'dashboard' ] }
+          }
+        ]
+      },
+      // 聊天室
       {
         path: '/chart',
         component: RouteView,
@@ -273,6 +290,22 @@ export const asyncRouterMap = [
             name: 'chart',
             component: () => import('@/views/chart/index'),
             meta: { title: '聊天室', keepAlive: true, permission: [ 'dashboard' ] }
+          }
+        ]
+      },
+      // elasticsearch
+      {
+        path: '/search',
+        component: RouteView,
+        redirect: '/search/index',
+        name: 'account',
+        meta: { title: '搜索', icon: 'message', keepAlive: true, permission: [ 'dashboard' ] },
+        children: [
+          {
+            path: '/search/index',
+            name: 'search',
+            component: () => import('@/views/search/Search'),
+            meta: { title: '搜索', keepAlive: true, permission: [ 'dashboard' ] }
           }
         ]
       }
